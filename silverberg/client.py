@@ -86,6 +86,15 @@ class CQLClient(object):
         ds = self._client.connection(_handshake)
         return ds
 
+    def disconnect(self):
+        """
+        Disconnect from the cassandra cluster.  Likely to be used for testing
+        purposes only.
+
+        :return: a :class:`Deferred` that fires with None when disconnected.
+        """
+        return self._client.disconnect()
+
     def describe_version(self):
         """
         Query the Cassandra server for the version.
@@ -209,15 +218,6 @@ class TestingCQLClient(CQLClient):
         Get the underlying Twisted transport.
         """
         return self._client._transport
-
-    def disconnect(self):
-        """
-        Disconnect from the cassandra cluster.  Likely to be used for testing
-        purposes only.
-
-        :return: a :class:`Deferred` that fires with None when disconnected.
-        """
-        return self._client.disconnect()
 
     def pause(self):
         """
