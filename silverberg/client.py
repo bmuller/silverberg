@@ -88,8 +88,7 @@ class CQLClient(object):
 
     def disconnect(self):
         """
-        Disconnect from the cassandra cluster.  Likely to be used for testing
-        purposes only.
+        Disconnect from the cassandra cluster.
 
         :return: a :class:`Deferred` that fires with None when disconnected.
         """
